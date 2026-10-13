@@ -37,5 +37,26 @@ const charNames = <List<String>>[
 
 const appVersion = '1.0.0';
 
-String tr(String k) => _s[k]![Save.I.lang == 'fa' ? 0 : 1];
 String charName(int i) => charNames[i][Save.I.lang == 'fa' ? 0 : 1];
+
+const _s2 = <String, List<String>>{
+  'happy': ['شادی', 'Happiness'],
+  'energy': ['انرژی', 'Energy'],
+  'boothLabel': ['خرید بلیت', 'Buy tickets'],
+  'boothSign': ['بلیت', 'Tickets'],
+  'rideFerris': ['سوار شو: چرخ‌وفلک', 'Ride: Ferris wheel'],
+  'noTicket': ['بلیت نداری! از باجه بلیت بخر.', 'No ticket! Buy one at the booth.'],
+  'noCoins': ['سکه کافی نداری', 'Not enough coins'],
+  'bought': ['بلیت خریده شد ✔', 'Ticket bought ✔'],
+  'dayTicket': ['بلیت روزانه (همه وسایل)', 'Day pass (all rides)'],
+  'dayTicketOwned': ['بلیت روزانه فعال است ✔', 'Day pass active ✔'],
+  'close': ['بستن', 'Close'],
+  'endRide': ['پایان سواری', 'End ride'],
+  'enjoy': ['چه منظره‌ای! شادی +۲۵', 'What a view! Happiness +25'],
+  'boarding': ['سوار شدی! از منظره لذت ببر', 'Enjoy the view!'],
+  'welcome': ['به شهربازی خوش آمدی!', 'Welcome to the funfair!'],
+  'ferrisName': ['چرخ‌وفلک بزرگ', 'Big Ferris Wheel'],
+  'coaster': ['ترن هوایی', 'Roller Coaster'],
+};
+
+String tr(String k) => (_s[k] ?? _s2[k]!)[Save.I.lang == 'fa' ? 0 : 1];

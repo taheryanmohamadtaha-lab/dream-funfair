@@ -1,32 +1,25 @@
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import '../core/strings.dart';
-import '../widgets/fun_button.dart';
+import '../game/park_game.dart';
+import '../widgets/shop_overlay.dart';
 
-/// Placeholder: replaced in part 2 by the Flame-based park world.
-class ParkScreen extends StatelessWidget {
+class ParkScreen extends StatefulWidget {
   const ParkScreen({super.key});
+  @override
+  State<ParkScreen> createState() => _ParkScreenState();
+}
+
+class _ParkScreenState extends State<ParkScreen> {
+  late final ParkGame game = ParkGame(onExit: () => Navigator.of(context).pop());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: funGradient,
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(tr('partTwo'),
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white, fontSize: 20)),
-              FunButton(
-                label: tr('back'),
-                color: Colors.deepPurple,
-                width: 160,
-                onTap: () => Navigator.of(context).pop(),
-              ),
-            ],
-          ),
-        ),
+      body: GameWidget<ParkGame>(
+        game: game,
+        overlayBuilderMap: {
+          'shop': (ctx, g) => ShopOverlay(onClose: g.closeShop),
+        },
       ),
     );
   }
